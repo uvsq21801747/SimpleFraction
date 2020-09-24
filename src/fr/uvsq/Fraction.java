@@ -1,9 +1,9 @@
 package fr.uvsq;
 
-public class SimpleFraction {
+public class Fraction {
 	double dividende, diviseur;
 	
-	public SimpleFraction()
+	public Fraction()
 	{
 		dividende = 0;
 		diviseur = 0;
@@ -15,5 +15,4 @@ public class SimpleFraction {
 				return "NAN";
 		return dividende + "/" + diviseur;
 	}
-	
 }

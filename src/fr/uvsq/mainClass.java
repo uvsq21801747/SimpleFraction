@@ -3,7 +3,7 @@ package fr.uvsq;
 public final class mainClass {
 
 	public static void main(String[] args) {
-		SimpleFraction test = new SimpleFraction();
+		Fraction test = new Fraction();
 		System.out.println(test);
 	}
 
