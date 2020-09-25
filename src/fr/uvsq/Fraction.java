@@ -8,6 +8,12 @@ public class Fraction {
 		dividende = 0;
 		diviseur = 0;
 	}
+
+	public Fraction(double dividende, double diviseur)
+	{
+		this.dividende = dividende;
+		this.diviseur = diviseur;
+	}
 	
 	public String toString()
 	{
