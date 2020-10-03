@@ -1,4 +1,3 @@
-package fr.uvsq;
 
 public class Fraction {
 	double dividende, diviseur;
