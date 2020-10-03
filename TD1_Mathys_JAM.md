@@ -15,7 +15,7 @@ Dans cet exercice, vous créerez une classe `Fraction` représentant un nombre r
 
 1. Sur la forge, créez le projet Java `SimpleFraction`;
 En terme de *commits*, quelle différence constatez-vous entre cocher une (ou plusieurs) des cases *Initialize this repository with* et n'en cocher aucune ?
-    En cochant des cases, on initialise le repo avec un commit initiale. Sinon, le repo est vide et donc n'est pas clonable
+    - En cochant des cases, on initialise le repo avec un commit initiale. Sinon, le repo est vide et donc n'est pas clonable
 
     Pour la suite, ne cochez aucune de ces cases.
 1. Localement, configurez `git` avec votre nom (`user.name`) et votre email (`user.email`);
@@ -37,10 +37,10 @@ Validez les changements;
 1. Ajoutez un constructeur et la méthode `toString` à la classe `Fraction` et modifiez la classe `Main` en conséquence;
 Validez les changements;
     ```Java
-    Fraction test = new Fraction();
-    assert test.toString().equals("NAN") : "test n'est pas correct";
-    Fraction test2 = new Fraction(1, 2);
-    assert "1.0/2.0".equals(test2.toString()) : "test2 n'est pas correct";
+    SimpleFraction test = new SimpleFraction();
+    assert test.toString().equals("NAN") : "test n'est pas correct"; // il est nécessaire d'utiliser le flag -ea
+    SimpleFraction test = new SimpleFraction(1, 2);
+    assert test.toString().equals("1/2") : "test2 n'est pas correct";
     ```
 1. Publiez vos modifications sur le dépôt distant;
 Vous utiliserez le protocole `https` pour cela;
@@ -51,7 +51,7 @@ Vérifiez avec le navigateur;
     ```
 1. Sur la forge, ajoutez un fichier de documentation `README.md`.
 Quelle syntaxe est utilisée pour ce fichier ?
-    Ce fichier utilise la syntaxe markdown
+    - Ce fichier utilise la syntaxe markdown
 1. Récupérez localement les modifications effectuées sur la forge.
     ```bash
     git pull
@@ -71,11 +71,14 @@ Quelle syntaxe est utilisée pour ce fichier ?
     .settings/
     ```
 1. Configurez l'accès par clé publique/clé privée à la forge (cf. [Use the SSH protocol with Bitbucket Cloud](https://confluence.atlassian.com/bitbucket/use-the-ssh-protocol-with-bitbucket-cloud-221449711.html)).
-    generer une clé ssh
-    ajouter la clé ssh au gestionnaire de clé
-    (ajouter un password a la clé)
-    ajouter la clé sur github
-    changer le remote pour utiliser le protocole SSH au lieu de https
+    
+    - generer une clé ssh
+    - ajouter la clé ssh au gestionnaire de clé
+    - (optionnel : ajouter un password a la clé)
+    - ajouter la clé sur github
+    - changer le remote pour utiliser le protocole SSH au lieu de https
+    - (optionnel : créer un fichier config dans ~/.ssh pour gerer le cas de plusieurs compte github avec des clés ssh)
+   
 
 ## Partie en distanciel : révisions et perfectionnement *shell* et *IDE*
 ### Maîtriser le *shell* de commandes
@@ -84,8 +87,10 @@ Vous pouvez répondre en utilisant le shell de votre choix (*bash*, *Powershell*
 Pour répondre à ces questions, vous devez effectuer les recherches documentaires adéquates (livre, web, ...).
 
 1. Quel OS et quel shell de commande utilisez-vous ?
+    ```
     Linux/Fedora
     bash
+   ```
 1. Quelle commande permet d'obtenir de l'aide ?
 Donnez un exemple.
     ```bash
@@ -94,7 +99,7 @@ Donnez un exemple.
 1. Donnez la ou les commandes shell permettant de
     1. afficher les fichiers d'un répertoire triés par taille (taille affichée lisiblement)
         ```bash
-        ls -lkS
+        ls -lSh
         ```
     1. compter le nombre de ligne d'un fichier
         ```bash
@@ -106,7 +111,7 @@ Donnez un exemple.
         ```
     1. afficher récursivement les fichiers `.java` contenant la chaîne `uneVariable`
         ```bash
-        ls -r | grep "uneVariable" *.java
+        grep -r --include "*.java" "uneVariable" .
         ```
     1. trouver les fichiers (pas les répertoires) nommés `README.md` dans une arborescence de répertoires
         ```bash
@@ -118,13 +123,14 @@ Donnez un exemple.
         ```
 1. Expliquez en une ou deux phrases le rôle de ces commandes et dans quel contexte elles peuvent être utiles pour un développeur.
     * `ssh`
-        ssh permet de gerer l'agent ssh, et donc par exemple de se connecter a une forge en utilisant le protocole ssh et non https
+        ssh permet de gerer l'agent ssh, et donc par exemple, permet de se connecter a une forge en utilisant le protocole ssh et non https.
+        C'est un protocole de communications securisées et cryptées
     * `screen`/`tmux`
         permet de creer et gerer plusieurs terminal dans une seul fenetre. Peut etre utile pour avoir un terminal pour la compilation, un terminal vim...
     * `curl`/[HTTPie](https://httpie.org/)
-        permet de transferer des données avec un serveur, en réception ou en emission 
+        permet de transferer des données avec un serveur, en réception ou en emission
     * [jq](https://stedolan.github.io/jq/)
-        jq permet de filtrer des données sous forme JSON
+        permet de filtrer des données sous forme JSON
 
 ### Découverte de votre *IDE*
 Dans cet exercice, vous expliquerez en quelques phrases comment vous réalisez les actions ci-dessous dans votre IDE.
@@ -132,29 +138,38 @@ Vous pouvez choisir l'IDE/éditeur de texte de votre choix.
 Pour réaliser cette exercice, vous devez bien évidemment vous reporter à la documentations de l'IDE ([IntelliJ IDEA](https://www.jetbrains.com/help/idea/discover-intellij-idea.html#developer-tools), [Visual Studio Code](https://code.visualstudio.com/docs), [Eclipse](https://help.eclipse.org/2020-09/index.jsp), ...).
 
 1. Quels IDE ou éditeurs de texte utilisez-vous pour le développement Java ?
-    Eclipse
-    Idea Intellij
+    - Eclipse
+    - Idea Intellij
 
     Pour la suite, ne considérez que l'un de vos choix.
 1. Comment vérifier/définir que l'encodage utilisé est *UTF-8* ?
-    File/Properties/Ressource
+    - File/Properties/Ressource/Encoding
 1. Comment choisir le JDK à utiliser dans un projet ?
-    File/Properties/Java Build Path
+    - File/Properties/Java Build Path/libraries/JRE/Edit
 1. Comment préciser la version Java des sources dans un projet ?
-    File/Properties/Java Compiler
+    - File/Properties/Java Compiler → Source compatibility
 1. Comment ajouter une bibliothèque externe dans un projet ?
-    File/Properties/Java Build Path -> libraries
+    - File/Properties/Java Build Path → libraries → add External JARs
 1. Comment reformater un fichier source Java ?
-    Clic droit -> format -> Format
+    - Source → Format
 1. Comment trouver la déclaration d'une variable ou méthode ?
-    Cliquer sur la variable -> F3
+    - Cliquer sur la variable → F3 ou clic droit → show declaration
 1. Comment insérer un bloc de code prédéfini (*snippet*) ?
-    ctrl+espace
+    commencez a tapez la snippets
+    - ctrl+espace pour la terminez
 1. Comment renommer une classe dans l'ensemble du projet ?
-    Clic droit -> refactor -> rename
+    - Clic droit → refactor → rename
 1. Comment exécuter le programme en lui passant un paramètre en ligne de commande ?
-    Run/run configurations -> arguments
+    - Run/run configurations → arguments
 1. Comment déboguer le programme en visualisant le contenu d'une ou plusieurs variables ?
-    F11 | Run/Debug
+    - mettre des breakpoints a l'endroit ou on veut visualisez des variables
+    - F11 ou Run/Debug
 1. Quels paramètres ou fonctionnalités vous semblent particulièrement importants/utiles pour le développement Java ?
-    La création simplifié des classe (avec final abstract, changer la classe parent..), la gestion des packages, le debugger et la refactorisation sont des élements trés utile
+    - La refactorisation est un outil trés puissant, pouvoir renommer une classe dans tout un projet d'un clic accelere 
+    considerablement la productivité.
+    - Le debugger visuel integré permet de plus simplement se retrouver dans le code que de devoir combiné un debugger 
+    terminal et un éditeur.
+    - Des features comme l'autocomplétion ou la génération simplifiée de documentation sont également trés utile 
+    pour la productivité.
+    - Certains IDE proposent aussi l'édition multiligne (curseur multiple)
+    
